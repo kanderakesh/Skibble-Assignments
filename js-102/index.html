@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bank-Statement</title>
+  </head>
+  <body>
+    <input
+      id="credit-data"
+      type="number"
+      placeholder="Enter the amount"
+      required
+    />
+    <button onclick="creditinfo()">Credit</button>
+    <input
+      id="debit-data"
+      type="number"
+      placeholder="Enter the amount"
+      required
+    />
+    <button onclick="debitinfo()">Debit</button>
+    <button onclick="output()">total balance</button>
+
+    <table style="margin-top: 20px; padding: 2px" border="2" width="100%">
+      <thead>
+        <tr>
+          <th>Bank Transactions </th>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+    </table>
+    <script src="./script.js"></script>
+  </body>
+</html>
