@@ -36,6 +36,6 @@ function debitinfo() {
 function output() {
   let rowdata = document.createElement("tr");
   rowdata.innerHTML = `<h3><b>The Available balance is ${total}</b></h3>`;
-  let table1 = document.getElementById("table");
-  table1.appendChild(rowdata);
+  let table2 = document.getElementById("table");
+  table2.appendChild(rowdata);
 }
