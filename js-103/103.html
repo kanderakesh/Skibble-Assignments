@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>103 Assignment</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        font-family: Roboto;
+      }
+
+      h2 {
+        color: black;
+        margin-top: 30px;
+      }
+
+      #main {
+        margin: 20px;
+        border-radius: 20px;
+      }
+      label {
+        text-align: left;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: aliceblue;
+      }
+      input[type="text"],
+      input[type="date"] {
+        width: 200px;
+        padding: 8px;
+      }
+      input {
+        border-radius: 10px;
+      }
+
+      table {
+        width: 65%;
+        margin: 20px auto;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        border-collapse: collapse;
+      }
+      th {
+        padding: 15px;
+        background-color: rgb(132, 164, 193);
+      }
+      td {
+        padding: 10px;
+        background-color: rgb(223, 223, 232);
+      }
+
+      #studentform {
+        width: 400px;
+        margin: 20px auto;
+        display: flex;
+        background-image: url("https://cdn.wallpapersafari.com/19/90/kGC79i.png");
+        background-position: center;
+        flex-direction: column;
+        border-radius: 10px;
+      }
+      #studentform div {
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+      }
+      h2 {
+        text-align: center;
+      }
+      .btn-donate {
+        --clr-font-main: hsla(0 0% 20% / 100);
+        --btn-bg-1: hsla(194 100% 69% / 1);
+        --btn-bg-2: hsla(217 100% 56% / 1);
+        --btn-bg-color: hsla(360 100% 100% / 1);
+        --radii: 0.5em;
+        cursor: pointer;
+        padding: 0.9em 1.4em;
+        min-width: 120px;
+        min-height: 44px;
+        font-size: var(--size, 1rem);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-weight: 500;
+        transition: 0.8s;
+        background-size: 280% auto;
+        background-image: linear-gradient(
+          325deg,
+          var(--btn-bg-2) 0%,
+          var(--btn-bg-1) 55%,
+          var(--btn-bg-2) 90%
+        );
+        border: none;
+        border-radius: var(--radii);
+        color: var(--btn-bg-color);
+        box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5),
+          0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+          inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+          inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+      }
+
+      .btn-donate:hover {
+        background-position: right top;
+      }
+
+      .btn-donate:is(:focus, :focus-visible, :active) {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .btn-donate {
+          transition: linear;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2><strong>STUDENT DETAILS</strong></h2>
+    <section id="main">
+      <form id="studentform">
+        <div>
+          <label for="studentname"
+            ><b>&nbsp;&nbsp;Name:&nbsp;&nbsp;&nbsp;&nbsp;</b></label
+          >
+          <input
+            type="text"
+            id="studentname"
+            placeholder="Enter your Name"
+            required
+          />&nbsp;&nbsp;
+        </div>
+        <div>
+          <label for="studentregistrationnumber"
+            ><b>Roll no:&nbsp;&nbsp;&nbsp;&nbsp;</b></label
+          >
+          <input
+            type="text"
+            id="studentregistrationnumber"
+            placeholder="Enter your Roll Rumber"
+            required
+          />&nbsp;
+        </div>
+        <div>
+          <label for="studentbirthday"
+            ><b
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BirthDay:&nbsp;&nbsp;&nbsp;</b
+            ></label
+          >
+          <input
+            type="date"
+            id="studentbirthday"
+            required
+          />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+          <input type="submit" value="Submit" class="btn-donate" />
+        </div>
+      </form><table border="1px">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Roll no</th>
+          <th>BirthDay</th>
+        </tr>
+      </thead>
+      <tbody id="studenttable"></tbody>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>
