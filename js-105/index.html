@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photo Gallery</title>
+    <link rel="icon" href="./logo.jpeg" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100vh;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 20px;
+      }
+      /* @media screen and (max-width: 768px) {
+        .gallery {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .photo {
+          width: 100%; 
+          margin: 10px 0; 
+        }
+      } */
+      .photo{
+        width: 300px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        margin: 10px;
+        border: 2px solid #555;
+      }
+      .photo {
+        transition: transform 0.03s;
+        cursor: pointer;
+      }
+      .photo:hover {
+        transform: scale(1.1);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        display: none;
+      }
+
+      .fullscreen img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery">
+      <div class="photo" id="photo1"></div>
+      <div class="photo" id="photo2"></div>
+      <div class="photo" id="photo3"></div>
+      <div class="photo" id="photo4"></div>
+      <div class="photo" id="photo5"></div>
+      <div class="photo" id="photo6"></div>
+      <div class="photo" id="photo7"></div>
+      <div class="photo" id="photo8"></div>
+      <div class="photo" id="photo9"></div>
+      <div class="photo" id="photo10"></div>
+      <div class="photo" id="photo11"></div>
+      <div class="photo" id="photo12"></div>
+      <div class="photo" id="photo13"></div>
+      <div class="photo" id="photo14"></div>
+      <div class="photo" id="photo15"></div>
+      <div class="photo" id="photo16"></div>
+      <div class="photo" id="photo17"></div>
+      <div class="photo" id="photo18"></div>
+      <div class="photo" id="photo19"></div>
+      <div class="photo" id="photo20"></div>
+      <div class="photo" id="photo21"></div>
+      <div class="photo" id="photo22"></div>
+      <div class="photo" id="photo23"></div>
+      <div class="photo" id="photo24"></div>
+      <div class="photo" id="photo25"></div>
+      <div class="photo" id="photo26"></div>
+      <div class="photo" id="photo27"></div>
+      <div class="photo" id="photo28"></div>
+      <div class="photo" id="photo29"></div>
+      <div class="photo" id="photo30"></div>
+      <div class="photo" id="photo31"></div>
+      <div class="photo" id="photo32"></div>
+      <div class="photo" id="photo33"></div>
+      <div class="photo" id="photo34"></div>
+      <div class="photo" id="photo35"></div>
+      <div class="photo" id="photo36"></div>
+      <div class="photo" id="photo37"></div>
+      <div class="photo" id="photo38"></div>
+    </div>
+    <div class="fullscreen" id="fullscreen">
+      <img id="zoomed-photo" src="" alt="Zoomed Photo" />
+    </div>
+    <script>
+      const imageUrls = [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+        "image11.jpg",
+        "image12.jpg",
+        "image13.jpg",
+        "image14.jpg",
+        "image15.jpg",
+        "image16.jpg",
+        "image17.jpg",
+        "image18.jpg",
+        "image19.jpg",
+        "image20.jpg",
+        "image21.jpg",
+        "image22.jpg",
+        "image23.jpg",
+        "image24.jpg",
+        "image25.jpg",
+        "image26.jpg",
+        "image27.jpg",
+        "image28.jpg",
+        "image29.jpg",
+        "image30.jpg",
+        "image31.jpg",
+        "image32.jpg",
+        "image33.jpg",
+        "image34.jpg",
+        "image35.jpg",
+        "image36.jpg",
+        "image37.jpg",
+        "image38.jpg",
+      ];
+      let images = [];
+
+      async function loadImages() {
+        images = await Promise.all(
+          imageUrls.map(async (url) => {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const objectURL = URL.createObjectURL(blob);
+            const img = new Image();
+            img.src = objectURL;
+            return img;
+          })
+        );
+
+        const photos = document.querySelectorAll(".photo");
+        photos.forEach((photo, index) => {
+          photo.style.backgroundImage = `url(${images[index].src}`;
+
+          photo.addEventListener("click", () => {
+            const fullscreen = document.getElementById("fullscreen");
+            const zoomedPhoto = document.getElementById("zoomed-photo");
+            zoomedPhoto.src = images[index].src;
+            fullscreen.style.display = "flex";
+          });
+        });
+      }
+
+      loadImages();
+      const fullscreen = document.getElementById("fullscreen");
+      fullscreen.addEventListener("click", () => {
+        fullscreen.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
